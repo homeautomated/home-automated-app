@@ -1,6 +1,6 @@
 var statusCurtain = 0,
     socket        = io.connect('http://192.168.1.69:8245');
-var socket              = io.connect('http://192.168.0.101:8245'); //casa ip bruno
+//var socket              = io.connect('http://192.168.0.101:8245'); //casa ip bruno
 
 socket.on('connect', function(data){
   socket.on('curtain_channel',function(data){
