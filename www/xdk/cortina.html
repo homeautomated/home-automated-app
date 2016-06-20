@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" type="text/css" href="icon-fonts/font-awesome-4.3.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="icon-fonts/elusive-icons-2.0.0/css/elusive-icons.css">
+    <link rel="stylesheet" type="text/css" href="cerulean/css/cerulean.min.css" class="uib-framework-theme">
+    <link rel="stylesheet" type="text/css" href="css/cortina_main.less.css" class="main-less">
+    <link rel="stylesheet" type="text/css" href="css/lamps.css">
+    <script src="./jsUtil/socket.io.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <script>
+      onload=function(){document.body.style.visibility="visible"}
+    </script>
+
+  </head>
+
+  <body style="height:100%;visibility:hidden;">
+    
+
+    <div class="upage" id="mainpage" style="height:100%;">
+      <div class="upage-outer" style="height:100%;">
+        <div class="uib-header header-bg container-group inner-element uib_w_1 uib-header-fixed" data-uib="layout/header" data-ver="0" id="titulo_cortina" style="height:10%">
+          <h2 style="color:#FFF;font-size:3vmax;font-family:fontnovaexp;">CORTINA</h2>
+          <div class="widget-container wrapping-col single-centered"></div>
+          <div class="widget-container content-area horiz-area wrapping-col left">
+            <button class="btn widget uib_w_4 d-margins btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1" style="background:#0BA7F2; border:0px;outline:none;font-size:3vmax;" id="voltar_menu_cortina" onclick="location.href= 'menu.html'"><i class="glyphicon glyphicon-chevron-left" data-position="icon only"></i>
+            </button>
+          </div>
+          <div class="widget-container content-area horiz-area wrapping-col right">
+            <button class="btn widget uib_w_5 d-margins btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1" style="background:#0BA7F2; border:0px;outline:none;font-size:3vmax;" id="sidebar_cortina" onclick="mostrarsid('sid_cortina')"><i class="el el-lines" data-position="icon only"></i>
+            </button>
+          </div>
+        </div>
+        <div class="upage-content ac0 content-area vertical-col left" id="page_93_75" style="height:90%;overflow-x: hidden;">
+          <div id="block_curtain" class="blockin curtain"><span class="glyphicon glyphicon-ban-circle block_camp"></div>
+          <div class="widget uib_w_2 scale-image d-margins" data-uib="media/img" data-ver="0">
+            <figure class="figure-align">
+              <img src="images/cortinaFechada.png" id="cortina" onclick="abreFecha(); sendCurtain();">
+              <figcaption data-position="bottom"></figcaption>
+            </figure>
+          </div>
+
+          <div style="display:none;width:100%;" class="inner-element uib_w_6 uib_sidebar rightbar bar-bg thumb-bg bar-gutter swipe" data-uib="layout/right_sidebar" data-ver="1" data-anim="{'style':'overlap', 'v':200, 'side':'right', 'dur':200}" id="sid_cortina">
+            <div class="sidebar-content content-area vertical-col" style="width:100%;">
+              <br>
+              <br>
+
+              <div class="uib-grid widget uib_w_20 grid-text grid-height d-margins sid_dimensao texto_sid" data-uib="layout/grid" data-ver="1" style="width:100%;margin-top:10%;">
+                <div class="uib-grid-row">
+                  <div class="uib-grid-cell widget-container">
+                    <button class="btn widget uib_w_7 d-margins btn-lg btn-primary sid_dimensao" data-uib="twitter%20bootstrap/button" data-ver="1" id="cortina_ar" onclick="location.href= 'ar.html'" style="font-family:sans-serif;"><i class="fa fa-yelp button-icon-top" data-position="top"></i>Ar</button>
+                  </div>
+                </div>
+                <div class="uib-grid-row">
+                  <div class="uib-grid-cell widget-container">
+                    <button class="btn widget uib_w_8 d-margins btn-lg btn-info" data-uib="twitter%20bootstrap/button" data-ver="1" id="cortinar_cortina" style="background: royalblue;font-family:sans-serif;"><i class="fa fa-pause button-icon-top" data-position="top"></i>Cortina</button>
+                  </div>
+                </div>
+                <div class="uib-grid-row">
+                  <div class="uib-grid-cell widget-container">
+                    <button class="btn widget uib_w_9 d-margins btn-lg btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1" id="cortina_lampadas" onclick="location.href= 'lampadas.html'" style="font-family:sans-serif;"><i class="el el-idea button-icon-top" data-position="top"></i>Lampadas</button>
+                  </div>
+                </div>
+                <div class="uib-grid-row">
+                  <div class="uib-grid-cell widget-container">
+                    <button class="btn widget uib_w_10 d-margins btn-lg btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1" id="cortina_tv" onclick="location.href= 'tv.html'" style="font-family:sans-serif;"><i class="fa fa-desktop button-icon-top" data-position="top"></i>Televisão</button>
+                  </div>
+                </div>
+                <div class="uib-grid-row">
+                  <div class="uib-grid-cell widget-container">
+                    <button class="btn widget uib_w_11 d-margins btn-lg btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1" id="cortina_temperatura" onclick="location.href= 'temperatura.html'" style="font-family:sans-serif;"><i class="fa fa-sellsy button-icon-top" data-position="top"></i>Temperatura</button>
+                  </div>
+                </div>
+                <div class="uib-grid-row">
+                  <div class="uib-grid-cell widget-container">
+                    <button class="btn widget uib_w_19 d-margins btn-lg btn-primary sid_dimensao" data-uib="twitter%20bootstrap/button" data-ver="1" id="lampadas_temperatura" onclick="location.href= 'configuracoes.html'" style="font-family:sans-serif;"><i class="glyphicon glyphicon-cog button-icon-top" data-position="top"></i>Configurações</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="widget uib_w_21 d-margins label label-primary" data-uib="twitter%20bootstrap/badge_and_label" data-ver="1" id="fedback"style="font-size:3vmax;background-color:#5bc0de;width:60%;margin-left:20%;opacity:0;">Abrindo ...</span>
+        </div>
+      </div>
+    </div>
+    <!-- JS -->
+    <script src="xdk/init-dev.js"></script>
+    <script type="application/javascript" src="lib/jquery.min.js"></script>
+    <script type="application/javascript" src="marginal/marginal-position.min.js"></script>
+    <script type="application/javascript" src="sidebar/js/hammer.js"></script>
+    <script type="application/javascript" src="sidebar/js/jquery.hammer.js"></script>
+    <script type="application/javascript" src="sidebar/js/swipe-hammer.js"></script>
+    <script type="application/javascript" src="sidebar/js/sidebar.js"></script>
+    <script type="application/javascript" src="js/cortina_user_scripts.js"></script>
+    <script type="text/javascript" src="jsUtil/cortina.js"></script>
+  </body>
+
+</html>

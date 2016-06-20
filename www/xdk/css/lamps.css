@@ -1,0 +1,48 @@
+.blockin{
+  width: 50%;
+  height: 33.3%;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  transition: 0.1s;
+}
+.bathroom{
+	top: -10em;
+}
+
+.kitchen{
+  left: 50%;
+  top: -10em;
+}
+
+.bedroom{
+	left: -10em;
+}
+
+.roomOne{
+	left: 102%;
+}
+
+.roomTwo{
+  left:0%;
+  top: 100%;
+}
+
+.alllamp{
+	left: 50%;
+  top: 100%;
+}
+.curtain{
+  top: -55%;
+  left: 8%;
+  width: 84%;
+  height: 53%;
+}
+.block_camp{
+position: absolute;
+    left: 43%;
+    top: 30%;
+    color: #CCC;
+}
