@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" type="text/css" href="media_button_bar/css/media_button_bar.css">
+    <link rel="stylesheet" type="text/css" href="icon-fonts/elusive-icons-2.0.0/css/elusive-icons.css">
+    <link rel="stylesheet" type="text/css" href="icon-fonts/font-awesome-4.3.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="cerulean/css/cerulean.min.css" class="uib-framework-theme">
+    <link rel="stylesheet" type="text/css" href="css/termometro_main.less.css" class="main-less">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+    <script src="xdk/init-dev.js"></script>
+    <script src="./js/socket.io.js"></script>
+    <script type="application/javascript" src="lib/jquery.min.js"></script>
+    <script type="application/javascript" src="marginal/marginal-position.min.js"></script>
+    <script type="application/javascript" src="sidebar/js/hammer.js"></script>
+    <script type="application/javascript" src="sidebar/js/jquery.hammer.js"></script>
+    <script type="application/javascript" src="sidebar/js/swipe-hammer.js"></script>
+    <script type="application/javascript" src="sidebar/js/sidebar.js"></script>
+    <script type="application/javascript" src="js/termometro_user_scripts.js"></script>
+    <script type="text/javascript" src="js/temperatura.js"></script>
+  </head>
+ 
+  <body style="height:100%;"> 
+
+    <div class="upage" id="mainpage" style="height:100%;">
+      <div class="upage-outer" style="height:100%;">
+        <div class="uib-header header-bg container-group inner-element uib_w_1 uib-header-fixed" data-uib="layout/header" data-ver="0" style="height:10%;" id="title_temp">
+          <h2 style="color:#fff;font-size:3vmax;font-family:fontnovaexp;">TEMPERATURA</h2>
+          <div class="widget-container wrapping-col single-centered"></div>
+          <div class="widget-container content-area horiz-area wrapping-col left">
+            <button class="btn widget uib_w_3 d-margins btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1" style="background:#0BA7F2;border:0px;outline:none;font-size:3vmax;" id="botao_voltar_menu" onclick="location.href= 'menu.html'"><i class="glyphicon glyphicon-chevron-left" data-position="icon only"></i>
+            </button>
+          </div>
+          <div class="widget-container content-area horiz-area wrapping-col right">
+            <button class="btn widget uib_w_4 d-margins btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1" style="background:#0BA7F2;border:0px;outline:none;font-size:3vmax;" id="sid_temperaturas" onclick="mostrarsid('bar_temperatura');bloquear();"><i class="el el-lines" data-position="icon only"></i>
+            </button>
+          </div>
+        </div>
+        <div class="upage-content ac0 content-area vertical-col left" id="page_48_19" style="height:90%;width:100%;overflow-y:hidden;overflow-x: hidden;">
+          <div class="uib-grid widget uib_w_2 grid-text grid-height d-margins" data-uib="layout/grid" data-ver="1" style="height:100%;" id="tabelaDeTemperature">
+            <div class="uib-grid-row">
+              <div class="uib-grid-cell widget-container">
+                <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_11 d-margins default-graphic-sizing media-button-text-bottom" data-uib="media/graphic_button" data-ver="0"
+                id="temp_banheiro">
+                  <img src="images/caixastempazul.png">
+                  <div id="temperaturabanheiro" style="position:absolute; top:31%; left:35%;font-size:5vmax;color:#0ba7f2;">25.4°</div>
+                  <span class="uib-caption">Banheiro</span>
+                </a>
+              </div>
+              <div class="uib-grid-cell widget-container">
+                <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_8 media-button-text-bottom" data-uib="media/graphic_button" data-ver="0" id="temp_cozinha">
+                  <img src="images/caixastempazul.png">
+                  <div id="temperaturacozinha" style="position:absolute; top:31%; left:35%;font-size:5vmax;color:#0ba7f2;">25.4º</div>
+                  <span class="uib-caption">Cozinha</span>
+                </a>
+              </div>
+
+            </div>
+            <div class="uib-grid-row">
+              <div class="uib-grid-cell widget-container">
+                <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_7 media-button-text-bottom" data-uib="media/graphic_button" data-ver="0" id="temp_quarto">
+                  <img src="images/caixastempazul.png">
+                  <div id="temperaturaquarto" style="position:absolute; top:31%; left:35%;font-size:5vmax;color:#0ba7f2;">25.4º</div>
+                  <span class="uib-caption">Quarto</span>
+                </a>
+              </div>
+              <div class="uib-grid-cell widget-container">
+                <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_10 media-button-text-bottom" data-uib="media/graphic_button" data-ver="0">
+                  <img src="images/caixastempazul.png">
+                  <div id="temperaturasala" style="position:absolute; top:31%; left:35%;font-size:5vmax;color:#0ba7f2;">25.4º</div>
+                  <span class="uib-caption">Sala</span>
+                </a>
+              </div>
+
+            </div>
+            <div class="uib-grid-row">
+              <div class="uib-grid-cell widget-container">
+                <a class="uib-graphic-button default-graphic-sizing default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_12 d-margins dimensaoimg media-button-text-bottom" data-uib="media/graphic_button"
+                data-ver="0" id="temp_sala">
+                  <img src="images/tempmediaazul.png">
+                  <div id="temperaturamedia" style="position:absolute; top:31%; left:43%;font-size:4vmax;color:#0ba7f2;">25.4º</div>
+                  <span class="uib-caption">Média</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <div style="display:none;width:100%;" class="inner-element uib_w_13 uib_sidebar rightbar bar-bg thumb-bg bar-gutter fixed" data-uib="layout/right_sidebar" data-ver="1" data-anim="{'style':'overlap', 'v':230, 'side':'right', 'dur':200, 'io':true}" id="bar_temperatura">
+            <div class="sidebar-content content-area vertical-col" style="width:100%;">
+              <br>
+              <br>
+
+              <div class="uib-grid widget uib_w_20 grid-text grid-height d-margins grid_sid text_sid" data-uib="layout/grid" data-ver="1" style="width:100%;margin-top:10%;">
+                <div class="uib-grid-row">
+                  <div class="uib-grid-cell widget-container">
+                    <button class="btn widget uib_w_12 d-margins btn-lg btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1" id="ar_ar" onclick="location.href='ar.html'" style="font-family:sans-serif;"><i class="fa fa-yelp button-icon-top" data-position="top"></i>Ar</button>
+                  </div>
+                </div>
+                <div class="uib-grid-row">
+                  <div class="uib-grid-cell widget-container">
+                    <button class="btn widget uib_w_13 d-margins btn-lg btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1" id="ar_cortina" onclick="location.href='cortina.html'" style="font-family:sans-serif;"><i class="el el-pause button-icon-top" data-position="top"></i>Cortina</button>
+                  </div>
+                </div>
+                <div class="uib-grid-row">
+                  <div class="uib-grid-cell widget-container">
+                    <button class="btn widget uib_w_14 d-margins btn-lg btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1" id="ar_lampadas" onclick="location.href='lampadas.html'" style="font-family:sans-serif;"><i class="el el-idea button-icon-top" data-position="top"></i>Iluminação</button>
+                  </div>
+                </div>
+                <div class="uib-grid-row">
+                  <div class="uib-grid-cell widget-container">
+                    <button class="btn widget uib_w_15 d-margins btn-lg btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1" id="ar_tv" onclick="location.href='tv.html'" style="font-family:sans-serif;"><i class="fa fa-desktop button-icon-top" data-position="top"></i>Televisão</button>
+                  </div>
+                </div>
+                <div class="uib-grid-row">
+                  <div class="uib-grid-cell widget-container">
+                    <button class="btn widget uib_w_16 d-margins btn-lg btn-info" data-uib="twitter%20bootstrap/button" data-ver="1" id="ar_temperatura" style="background: royalblue;font-family:sans-serif;"><i class="fa fa-sellsy button-icon-top" data-position="top"></i>Temperatura</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

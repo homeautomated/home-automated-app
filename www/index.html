@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+        <meta charset="UTF-8">
+        <title>Smart Home Automated</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+        <!--<style>
+            @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }       @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+            @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+        </style>-->
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+        <link rel="stylesheet" type="text/css" href="circulo.css">
+        <script src="./xdk/js/socket.io.js"></script>
+        <script src="cordova.js" id="xdkJScordova_"></script>
+        <script src="js/app.js"></script>
+        <script src="js/init-app.js"></script>
+        <script src="xdk/init-dev.js"></script>
+        <script type="application/javascript" src="lib/jquery.min.js"></script>
+        <script type="application/javascript" src="marginal/marginal-position.min.js"></script>
+        <script type="text/javascript">
+            setTimeout(function () {window.location.href = "xdk/menu.html";}, 7000);
+        </script>
+        <script>
+          window.setTimeout(fcTra,2000);
+          function fcTra(){
+            var t = document.getElementById("trans");
+            var h1 = document.getElementById("titulo");
+            t.className += " circle2";
+            h1.className += " circleTxt";
+          }
+        </script>
+    </head>
+    
+    <body style="heigth:100%;width: 100%;">
+        <div class="upage" id="mainpage" style="heigth:100%; width:100%;">
+            <div class="upage-outer" style="heigth:100%;width: 100%;">
+                <div class="upage-content ac0 content-area vertical-col" id="page_37_75"  style="heigth:100%;width:100%;">
+                    <div class="circle" id="trans" style="margin-top:50%;">
+                        <h1 id="titulo">Smart Home Automated</h1>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </body>
+</html>

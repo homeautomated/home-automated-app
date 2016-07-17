@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="media_button_bar/css/media_button_bar.css">
+    <link rel="stylesheet" type="text/css" href="icon-fonts/font-awesome-4.3.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="icon-fonts/elusive-icons-2.0.0/css/elusive-icons.css">
+    <link rel="stylesheet" type="text/css" href="cerulean/css/cerulean.min.css" class="uib-framework-theme">
+    <link rel="stylesheet" type="text/css" href="css/iluminacao_main.less.css" class="main-less">
+    <link rel="stylesheet" type="text/css" href="css/lamps.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <script src="xdk/init-dev.js"></script>
+    <script src="./js/socket.io.js"></script>
+    <script> onload=function(){document.body.style.visibility="visible"}</script> 
+  </head>
+
+  <body style="visibility:hidden;height:100%;overflow-x: hidden;"> 
+    <div class="upage" id="mainpage" style="height:100%;">
+      <div class="upage-outer" style="height:100%;">
+        <div class="uib-header header-bg container-group inner-element uib_w_1 uib-header-fixed" data-uib="layout/header" data-ver="0" style="height:10%;background:#0BA7F2;" id="titulo_iluminacao">
+          <h2 style="color:#FFF;font-size:3vmax;font-family:fontnovaexp;">ILUMINAÇÃO</h2>
+          <div class="widget-container wrapping-col single-centered"></div>
+          <div class="widget-container content-area horiz-area wrapping-col left">
+            <button class="btn widget uib_w_3 d-margins btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1" style="background:#0BA7F2;border:0px;outline:none;font-size:3vmax;" id="voltar_menu" onclick="location.href= 'menu.html'"><i class="el el-chevron-left" data-position="icon only"></i>
+            </button>
+          </div>
+          <div class="widget-container content-area horiz-area wrapping-col right">
+            <button class="btn widget uib_w_2 d-margins uso_sid btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1" style="background:#0BA7F2;border:0px;outline:none;font-size:3vmax;" id="sidbar_lamp" onclick="mostrarsid('sid_iluminacao')"><i class="el el-lines" data-position="icon only"></i>
+            </button>
+          </div>
+        </div>
+        <div class="upage-content ac0 content-area vertical-col left" id="page_53_74" style="height:90%;width:100%;overflow-y:hidden;overflow-x: hidden;">
+          <div class="uib-grid widget uib_w_8 grid-text grid-height d-margins" data-uib="layout/grid" data-ver="1" style="height:100%;">
+            <div class="uib-grid-row">
+            <div id="block_bathroom" class="blockin bathroom"></div>
+            <div id="block_kitchen" class="blockin kitchen"></div>
+              <div class="uib-grid-cell widget-container">
+                <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_28 media-button-text-bottom" data-uib="media/graphic_button" data-ver="0" id="lamp_banheiro" onclick="lampbanheiro(); sendLampBathroom();">
+                  <img src="images/lampadaoffnova.png" id="lbanheiro">
+                  <span class="uib-caption">Banheiro</span>
+                </a>
+              </div>
+              <div class="uib-grid-cell widget-container">
+                <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_31 media-button-text-bottom" data-uib="media/graphic_button" data-ver="0" id="lamp_cozinha" onclick="lampcozinha(); sendLampKitchen();">
+                  <img src="images/lampadaoffnova.png" id="lcozinha">
+                  <span class="uib-caption">Cozinha</span>
+                </a>
+              </div>
+            </div>
+            <div class="uib-grid-row">
+            <div id="block_bedroom" class="blockin bedroom"></div>
+            <div id="block_roomOne" class="blockin roomOne"></div>
+              <div class="uib-grid-cell widget-container">
+                <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_26 media-button-text-bottom" data-uib="media/graphic_button" data-ver="0" id="lamp_quarto" onclick="lampquarto(); sendLampBedroom();">
+                  <img src="images/lampadaoffnova.png" id="lquarto">
+                  <span class="uib-caption">Quarto</span>
+                </a>
+              </div>
+              <div class="uib-grid-cell widget-container">
+                <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_27 d-margins media-button-text-bottom usolamp" data-uib="media/graphic_button" data-ver="0" id="lamp_sala1"
+                onclick="lampsala1(); sendLampRoomOne();">
+                  <img src="images/lampadaoffnova.png" id="lsala1">
+
+                  <span class="uib-caption">Sala</span>
+                </a>
+              </div>
+            </div>
+            <div class="uib-grid-row">
+              <div id="block_roomTwo" class="blockin roomTwo"></div>
+              <div id="block_all" class="blockin alllamp"></div>
+              <div class="uib-grid-cell widget-container">
+                <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_24 default-graphic-sizing media-button-text-bottom" data-uib="media/graphic_button" data-ver="0" id="lamp_sala2" onclick="lampsala2(); sendLampRoomTwo();">
+                  <img src="images/lampadaoffnova.png" id="lsala2">
+                  <span class="uib-caption">Sala²</span>
+                </a>
+              </div>
+              <div class="uib-grid-cell widget-container">
+                <a class="uib-graphic-button default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_35 media-button-text-bottom">
+                  <img onclick="all_lamps(); sendLamp_all();" id="all_lamp" src="images/todason.png">
+                  <span class="uib-caption">Todas</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <button class="btn widget uib_w_19 d-margins btn-lg btn-primary lampadas_temperatura" data-uib="twitter%20bootstrap/button" data-ver="1" onclick="location.href= 'configuracoes.html'"><i class="glyphicon glyphicon-cog button-icon-top" data-position="top"></i>Configurações</button>
+          <button class="btn widget uib_w_19  btn-lg btn-primary uso_sid lampadas_temperatura" data-uib="twitter%20bootstrap/button" data-ver="1" onclick="location.href= 'temperatura.html'"> <i class="fa fa-sellsy button-icon-left" data-position="left"></i>Temperatura</button>
+          <button class="btn widget uib_w_19  uso_sid btn-lg btn-primary lampadas_temperatura" data-uib="twitter%20bootstrap/button" data-ver="1" onclick="location.href= 'configuracoes.html'"><i class="glyphicon glyphicon-cog button-icon-left" data-position="left"></i>Configurações</button>
+          <br>
+
+          <div style="display:none;width:100%;" class="inner-element uib_w_36 uib_sidebar rightbar bar-bg thumb-bg bar-gutter fixed" data-uib="layout/right_sidebar" data-ver="1" data-anim="{'style':'overlap', 'v':230, 'side':'right', 'dur':200}" id="sid_iluminacao">
+
+            <div class="sidebar-content content-area vertical-col" style="width:100%;">
+              <br><br><br>
+              <div class="uib-grid widget uib_w_37 grid-text grid-height d-margins especialsid compactivel" data-uib="layout/grid" data-ver="1" style="width:100%;">
+                <div class="uib-grid-row">
+                  <div class="uib-grid-cell widget-container">
+
+                    <button class="btn widget uib_w_15 uso_sid btn-lg btn-primary especialsid usolamp" data-uib="twitter%20bootstrap/button" data-ver="1" id="lampadas_ar" onclick="location.href= 'ar.html'" style="width:100%;font-family:sans-serif;"><i class="fa fa-yelp button-icon-top" data-position="top"></i>Ar</button>
+                  </div>
+                </div>
+                <div class="uib-grid-row">
+                  <div class="uib-grid-cell widget-container">
+                    <button class="btn widget uib_w_16 uso_sid btn-lg btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1" id="lampadas_cortina" onclick="location.href= 'cortina.html'" style="font-family:sans-serif;"><i class="el el-pause button-icon-top" data-position="top"></i>Cortina</button>
+                  </div>
+                </div>
+                <div class="uib-grid-row">
+                  <div class="uib-grid-cell widget-container">
+                    <button class="btn widget uib_w_17  uso_sid btn-lg btn-info" data-uib="twitter%20bootstrap/button" data-ver="1" id="lampadas_lampadas" style="background: royalblue;font-family:sans-serif;"><i class="el el-idea button-icon-top" data-position="top"></i>Iluminação</button>
+                  </div>
+                </div>
+                <div class="uib-grid-row">
+                  <div class="uib-grid-cell widget-container">
+                    <button class="btn widget uib_w_18  uso_sid btn-lg btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1" id="lampadas_televisao" onclick="location.href= 'tv.html'" style="font-family:sans-serif;"><i class="fa fa-desktop button-icon-top" data-position="top"></i>Televisão</button>
+                  </div>
+                </div>
+                <div class="uib-grid-row">
+                  <div class="uib-grid-cell widget-container">
+                    <button class="btn widget uib_w_11 d-margins btn-lg btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1" id="cortina_temperatura" onclick="location.href= 'temperatura.html'" style="font-family:sans-serif;"><i class="fa fa-sellsy button-icon-top" data-position="top"></i>Temperatura</button>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="js/lampadas.js"></script>
+
+  </body>
+    <script type="application/javascript" src="lib/jquery.min.js"></script>
+    <script type="application/javascript" src="marginal/marginal-position.min.js"></script>
+    <script type="application/javascript" src="sidebar/js/hammer.js"></script>
+    <script type="application/javascript" src="sidebar/js/jquery.hammer.js"></script>
+    <script type="application/javascript" src="sidebar/js/swipe-hammer.js"></script>
+    <script type="application/javascript" src="sidebar/js/sidebar.js"></script>
+    <script type="application/javascript" src="js/iluminacao_user_scripts.js"></script>
+    <script type="application/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+</html>
