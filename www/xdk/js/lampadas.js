@@ -5,10 +5,14 @@ var roomOne             = 0;
 var roomTwo             = 0;
 var valorCheck          = 0;
 var connection_lamp_all = 0;
-//var socket              = io.connect('http://192.168.0.101:8245'); //casa ip bruno
-var socket              = io.connect('http://192.168.1.69:8245');
+var teste = 0;
+var socket              = io.connect('http://192.168.0.104:8245'); //casa ip bruno
+//var socket              = io.connect('http://192.168.1.99:8245');
+
+block_left_all_server("block_all","67%","100%");
 
 socket.on('connect', function(data){
+  disblock_left_all_server("block_all","100%","67%");
   socket.on('allLamp',function(data){
     if(data.lamp_all_conect == 5){
       modifyLamps(1, 5);
@@ -31,6 +35,10 @@ socket.on('connect', function(data){
       roomTwo = data.lampRoomTwo;
     }
     status();
+  });
+  socket.on('disconnect', function(){
+    block_left_all_server("block_all","67%","100%");
+    location.reload();
   });
 });
 
@@ -59,6 +67,7 @@ socket.on('lamp_All',function(data){
 
 /*-------------------------------------FUNÇÃO LIGAR/DESLIGAR LAMPADA BANHEIRO -----------------------------------------*/
 
+
 function lampbanheiro(){
   if(bathroom == 0){
     lampOn("lbanheiro");
@@ -75,7 +84,7 @@ function lampbanheiro(){
 }
 
 function sendLampBathroom(){
- socket.emit('lamp_All', "lampBathroom");
+  socket.emit('lamp_All', "lampBathroom");
 }
 
 /*-------------------------------------FUNÇÃO LIGAR/DESLIGAR LAMPADA COZINHA -----------------------------------------*/
@@ -96,7 +105,7 @@ function lampcozinha(){
 }
 
 function sendLampKitchen(){
- socket.emit('lamp_All', "lampKitchen");
+  socket.emit('lamp_All', "lampKitchen");
 }
 
 /*-------------------------------------FUNÇÃO LIGAR/DESLIGAR LAMPADA QUARTO -----------------------------------------*/
@@ -175,7 +184,7 @@ function all_lamps(){
     modifyLamps(1,5);
 
   }else{
-      document.getElementById("all_lamp").src="images/todason.png";
+    document.getElementById("all_lamp").src="images/todason.png";
     lampOff("lbanheiro");
     lampOff("lcozinha");
     lampOff("lquarto");
@@ -267,3 +276,35 @@ function block_left_all(id,siz,siz_){
     document.getElementById(id).style.top = siz_;
   }, 1000);
 }
+
+function block_left_all_server(id,siz,siz_){
+  document.getElementById(id).style.top = siz;
+  block_server("block_roomTwo","67%","100%");
+  block_left_server("block_roomOne","50%","102%");
+  block_left_server("block_bedroom","0em","-10em");
+  block_server("block_kitchen","0em","-10em");
+  block_server("block_bathroom","0em","-10em");
+}
+
+function block_server(id,siz,siz_){
+  document.getElementById(id).style.top = siz;
+}
+
+function block_left_server(id,siz,siz_){
+  document.getElementById(id).style.left = siz;
+}
+
+function disblock_left_all_server(id,siz,siz_){
+  document.getElementById(id).style.top = siz;
+  block_server("block_roomTwo","100%","67%");
+  block_left_server("block_roomOne","102%","50%");
+  block_left_server("block_bedroom","-10em","0em");
+  block_server("block_kitchen","-10em","0em");
+  block_server("block_bathroom","-10em","0em");
+}
+
+(function(){
+  setTimeout(function(){
+    location.reload();
+  }, 100000);
+})();

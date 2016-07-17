@@ -1,4 +1,4 @@
-var socket = io.connect('http://192.168.1.69:8245');
+var socket = io.connect('http://192.168.1.99:8245');
 var averageTemp = 0;
 
 socket.on('connect', function(data) {	

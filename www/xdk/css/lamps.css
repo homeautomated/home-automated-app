@@ -41,8 +41,24 @@
   height: 53%;
 }
 .block_camp{
-position: absolute;
-    left: 43%;
-    top: 30%;
-    color: #CCC;
+  position: absolute;
+  left: 43%;
+  top: 30%;
+  color: #CCC;
+}
+
+.block_ar{
+  background: none;
+  height: 40%;
+  position: absolute;
+  z-index: 1;
+  top: -50%;
+}
+
+.tv_block{
+  background: none;
+  height: 40%;
+  position: absolute;
+  top: -50%;
+  z-index: 1;
 }

@@ -1,12 +1,19 @@
-var statusCurtain = 0,
-    socket        = io.connect('http://192.168.1.69:8245');
-//var socket              = io.connect('http://192.168.0.101:8245'); //casa ip bruno
+var statusCurtain = 0;
+//var socket        = io.connect('http://192.168.1.99:8245');
+var socket              = io.connect('http://192.168.0.104:8245'); //casa ip bruno
+
+block_device_server("block_curtain");
 
 socket.on('connect', function(data){
+  disblock_device_server("block_curtain");
   socket.on('curtain_channel',function(data){
     data.sts_curtain == 0 ? document.getElementById("cortina").src="images/cortinaFechada.png" : document.getElementById("cortina").src="images/cortinaAberta.png";
     data.sts_curtain == 0 ? document.getElementById("fedback").innerHTML ="Cortina Fechada" : document.getElementById("fedback").innerHTML ="Cortina Aberta";
     statusCurtain = data.sts_curtain;
+  });
+  socket.on('disconnect', function(){
+    block_device_server("block_curtain");
+    location.reload();
   });
 });
 
@@ -20,14 +27,14 @@ socket.on('curtain_func',function(curtain_data){
 function abreFecha(){
     if(statusCurtain == 0){
       document.getElementById("cortina").src="images/cortinaAberta.png";
-      document.getElementById("fedback").innerHTML ="Abrindo...";
+      document.getElementById("fedback").innerHTML ="Cortina Abrindo...";
       statusCurtain  = 1;
       setTimeout(function(){
-      document.getElementById("fedback").innerHTML ="Cortina aberta";
+      document.getElementById("fedback").innerHTML ="Cortina Aberta";
       },20000);
     } else {
         document.getElementById("cortina").src="images/cortinaFechada.png";
-        document.getElementById("fedback").innerHTML ="Fechando...";
+        document.getElementById("fedback").innerHTML ="Cortina Fechando...";
         statusCurtain = 0;
         setTimeout(function(){
         document.getElementById("fedback").innerHTML ="Cortina Fechada";
@@ -45,6 +52,14 @@ function block_device(id_device){
   setTimeout(function(){
     document.getElementById(id_device).style.top = "-55%";
   }, 20000);
+}
+
+function block_device_server(id_device){
+  document.getElementById(id_device).style.top = "3%";
+}
+
+function disblock_device_server(id_device){
+  document.getElementById(id_device).style.top = "-55%";
 }
 
 /*---------------------------------------- FUNÇÃO MOSTRAR DIV OCULTA SIDEBAR -----------------------------------------*/
