@@ -96,7 +96,7 @@ function block_device(id_device){
   document.getElementById(id_device).style.top = "0%";
   setTimeout(function(){
     document.getElementById(id_device).style.top = "-50%";
-  }, 2000);
+  }, 3000);
 }
 
 function block_device_server(id_device){
@@ -106,3 +106,9 @@ function block_device_server(id_device){
 function disblock_device_server(id_device){
   document.getElementById(id_device).style.top = "-50%";
 }
+
+(function(){
+  setTimeout(function(){
+    location.reload();
+  }, 100000);
+})();

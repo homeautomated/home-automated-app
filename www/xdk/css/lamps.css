@@ -49,7 +49,7 @@
 
 .block_ar{
   background: none;
-  height: 40%;
+  height: 45%;
   position: absolute;
   z-index: 1;
   top: -50%;
@@ -57,7 +57,7 @@
 
 .tv_block{
   background: none;
-  height: 40%;
+  height: 52%;
   position: absolute;
   top: -50%;
   z-index: 1;
